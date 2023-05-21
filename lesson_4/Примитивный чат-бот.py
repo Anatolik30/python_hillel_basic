@@ -44,7 +44,7 @@ if third_question.lower() == 'серіал':  # Условие если ключ
 
 four_question_frases = ['бувай', 'надобраніч', 'гудбай', 'до зустрічі']  # Список ключевых слов
 four_question = input('>')  # Повторный ввод пользователя
-while four_question.lower().find() not in four_question_frases:    # Условие цикла с переводом в нижний регистр
+while four_question.lower() not in four_question_frases:    # Условие цикла с переводом в нижний регистр
     print('Дуже цікаво, але, нажаль, нічого не зрозуміло :(')   # Вывод результата если условие True
     four_question = input('>')  # Повторный ввод пользователя
 if four_question.lower() in four_question_frases:   # Условие если цикл False

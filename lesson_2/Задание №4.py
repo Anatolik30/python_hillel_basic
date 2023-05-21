@@ -1,9 +1,9 @@
 consumption = float(input('Укажите расход автомобиля на 100 км: '))  # Расход топлива
 price = float(input("Стоимость 1 литра топлива?: "))  # Цена за 1 литр
-if consumption >= 12:  # Комментарий
+if consumption >= 12:  # Комментарий при большом расходе топлива
     print("Дешевле будет на велосипеде!")
 distance = float(input("Укажите расстояние: "))  # Расстояние
-if distance >= 150:  # Комментарий
+if distance >= 150:  # Комментарий при большом расстоянии
     print("Да, расстояние не для велосипеда!")
 consumption_at_one = consumption / 100 * distance  # Расход топлива на 1 км
 travel_cost = consumption_at_one * price  # Стоимость поездки
