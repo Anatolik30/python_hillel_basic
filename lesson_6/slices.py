@@ -1,14 +1,14 @@
-text = input('''Enter your text here: \n >''')
-for i in range(len(text)):
-    if '(' in text:
-        opening = True
-        start = text.index('(')
+text = input('''Enter your text here: \n >''')  # Ввод пользователя
+for i in range(len(text)):      # Цикл перебора символов в строке
+    if '(' in text:     # Условие если скобка найдена
+        opening = True         # Флаг на открытую скобку
+        start = text.index('(')     # Узнаем индекс открытой скобки
     else:
-        opening = False
-    if ')' in text:
-        close = True
-        stop = text.index(')')
-    if opening == close:
-        text = text[:start] + text[stop + 1:]
-        continue
-print(text)
+        opening = False     # Условие если скобок нет
+    if ')' in text:     # Условие если скобка закрывается
+        close = True    # Флаг на закрытую скобку
+        stop = text.index(')')      # идекс закрывающей скобки
+    if opening == close:    # Если оба флага True значит делаем удаление через срез
+        text = text[:start] + text[stop + 1:]       # Условие среза
+        continue    # продолжаем до тех пор пока не закончится рейнж цикла что бі найти все скобки
+print(text)     # Вывод
