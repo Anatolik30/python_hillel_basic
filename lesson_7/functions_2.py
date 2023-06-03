@@ -24,6 +24,12 @@ def read_user_value(user_prompt, correct_sides):
 
 
 def calculate(a, b, c):
+    """
+    Функция для математических расчетов треугольника
+    :param a: сторона "а"
+    :param b: сторона "b"
+    :param c: сторона "c"
+    """
     if a + b > c and a + c > b and b + c > a:  # Условие на проверку является ли фигура треугольником исходя и размеров
         p = a + b + c  # Форума периметра
         half_p = p / 2  # Формула полуметра
