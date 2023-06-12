@@ -21,8 +21,6 @@ def command():
 def add_note():
     """
     Функция добавления заметки
-    :param user_promt:
-    :return:
     """
     add_new = input('Enter your notes please: \n>')
     notes_list.append(add_new)
