@@ -33,23 +33,26 @@ def earliest_note():
     """
     Функія виводить збережені нотатки у хронологічному порядку - від найранішої до найпізнішої
     """
-    print(notes_list)
+    for note in notes_list:
+        print(note)
     command()
 
 
 def lastest_note():
-    print(sorted(notes_list, reverse=True))
+    for note in notes_list:
+        print(note[::-1])
     command()
 
 
 def longest_note():
-    new_list = sorted(notes_list, key=notes_list)
+    print(sorted(notes_list, key=len, reverse=True))
+    command()
 
 
 
 def shortest_note():
-    pass
-
+    print(sorted(notes_list, key=len))
+    command()
 
 if __name__ == '__main__':
 
