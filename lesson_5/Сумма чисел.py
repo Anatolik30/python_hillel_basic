@@ -1,10 +1,10 @@
 income = input("Введіть число або 'sum': \n >")  # Ввод пользователя
 counter = 0  # Счетчик суммы чисел
 while True:  # Цикл ввода пользователя до ключевого слова "sum"
-    income = input("Введіть число або 'sum': \n >")
-    if income == 'sum':
+    income = input("Введіть число або 'sum': \n >")   # Повторный ввод пользователя
+    if income == 'sum':     # Если ввод равен ключевому слову то цикл прерывается
         break
-    try:
+    try:    # Проверка на ошибку ввода
         counter += float(income)  # Попытка конвертации str во float, если ок то + к счетчику
     except ValueError:
         print(

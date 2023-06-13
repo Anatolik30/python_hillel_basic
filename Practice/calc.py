@@ -10,7 +10,7 @@
 # python -m PyQt5.uic.pyuic -x [FILENAME].ui -o [FILENAME].py
 
 
-from PyQt5 import QtCore, QtGui, QtWidgets
+from PyQt6 import QtCore, QtGui, QtWidgets
 
 
 # Функция интерфейса

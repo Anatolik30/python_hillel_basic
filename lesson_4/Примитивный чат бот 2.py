@@ -1,19 +1,17 @@
-# Пример 1-го цикл через операторы and и or
+
 
 print('Козацького здоровья! Ну що, почнемо?')  # Старотовая фраза бота
 first_question = input('\n >')  # Переменная для первого вопроса
-while first_question.lower() != 'привіт' and first_question.lower() != 'хай' and \
-        first_question.lower() != 'доброго дня':  # Условие цикла с переводом в нижний регистр
+first_question_frases = ['привіт', 'хай', 'доброго дня']
+while any( word in first_question.lower() for word in first_question):   # Условие цикла с переводом в нижний регистр
     print('Дуже цікаво, але, нажаль, нічого не зрозуміло :(')  # Вывод результата
     first_question = input('>')  # Повторный ввод пользователя
 if first_question.lower() == 'привіт' or first_question.lower() != 'хай' or \
         first_question.lower() != 'доброго дня':  # Условие если цикл False
     print('Доброго вечора, я бот з України!')  # Вывод результата
 
-# Пример 2-го цикла через операторы not in в строке
-
 second_question = input('>')  # Ввод пользователя
-second_question_frases = 'як справи? / що робиш? / чим займаєшся?'  # Строка ключевых слов
+second_question_frases = ['як справи?', 'що робиш?', 'чим займаєшся?']  # список ключевых слов
 while second_question.lower() not in second_question_frases:  # Условие цикла с переводом в нижний регистр
     print('Дуже цікаво, але, нажаль, нічого не зрозуміло :(')  # Вывод результата
     second_question = input('>')  # Повторній ввод пользователя
