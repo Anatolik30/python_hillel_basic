@@ -43,7 +43,7 @@ def lastest_note():
 
 
 def longest_note():
-    new_list = sorted(notes_list, key=notes_list)
+    new_list = sorted(notes_list, key=len)
 
 
 
@@ -52,6 +52,6 @@ def shortest_note():
 
 
 if __name__ == '__main__':
-
+    sorted_list =
     key_words = ['add', 'earliest', 'lastest', 'longest', 'shortest']
     command()
