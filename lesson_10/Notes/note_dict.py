@@ -1,5 +1,4 @@
-notes_list = ['this is note', 'this is notissimo', 'note', 'this is a huge long, insanely long note',
-              'well, anyways']
+notes_list = []
 command_notations = {
     'add': '- додати нотатку.',
     'earliest': '- виводить збережені нотатки у хронологічному порядку - від найранішої до '
