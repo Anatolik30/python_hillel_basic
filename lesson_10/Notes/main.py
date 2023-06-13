@@ -50,6 +50,7 @@ def delete_note():
     delete = input(Fore.RED + 'Enter the note for delete please: \n>')  # Для акцентування виділення друкується червоним
     if delete in notes_list:
         notes_list.remove(delete)
+        print(Fore.RED + 'Not deleted')
     else:
         print("This note wasn't found.")
     command()  # Визов основної функції після кожної операції
