@@ -1,10 +1,7 @@
-import os
 import sys  # модуль для завершения программы
 from colorama import Fore, init  # модуль для изменения цвета текста
 
 init(autoreset=True)  # возвращение цвета по умолчанию после применения цвета
-
-
 
 
 def command():
@@ -16,17 +13,17 @@ def command():
         income = input(Fore.BLUE + 'Enter the command please: \n>').lower()
         if income == 'add':
             add_note()
-        if income == 'earliest':
+        elif income == 'earliest':
             earliest_note()
-        if income == 'latest':
+        elif income == 'latest':
             latest_note()
-        if income == 'longest':
+        elif income == 'longest':
             longest_note()
-        if income == 'shortest':
+        elif income == 'shortest':
             shortest_note()
-        if income == 'delete':
+        elif income == 'delete':
             delete_note()
-        if income == 'exit':
+        elif income == 'exit':
             sys.exit('See you later!')  # завершаем программу
         else:
             print('Enter one of the commands below, for EXIT enter', Fore.CYAN + "'exit'")
@@ -39,10 +36,13 @@ def add_note():
     """
     Функція добавлення заміток
     """
-    base = open('content.txt', 'a', encoding='utf-8')
-    add_new = input('Enter your notes please: \n>')
-    base.write(f'{add_new}, \n')    # Добавление заметок в список
-    base.close()
+    if open('content.txt', 'a', encoding='utf-8'):
+        base = open('content.txt', 'a', encoding='utf-8')
+        add_new = input('Enter your notes please: \n>')
+        base.write(f'* {add_new} \n')  # Добавление заметок в список
+        base.close()
+    else:
+        print('Can not open file.')
     command()  # Визов основної функції після кожної операції
 
 
@@ -50,17 +50,27 @@ def delete_note():
     """
     Функция для видалення нотаток
     """
-    delete = input(Fore.RED + 'Enter the note for delete please: \n>')  # Для акцентування виділення друкується червоним
-    base = open('content.txt', 'r+', encoding='utf-8')
-    lines = base.readlines()
-    for line in lines:
-        if delete in lines:
-            new_line = base.replace(f'{delete}\n', '')
-            base = base.write(new_line)
-            print(Fore.RED + 'deleted')
+    global note
+    delete = input(
+        Fore.RED + 'Enter the FULL note for delete please: \n>')  # Для акцентування виділення друкується червоним
+    if open('content.txt', mode='r', encoding='utf-8'):
+        base = open('content.txt', mode='r', encoding='utf-8')
+        lines = base.readlines()  # Разбиваем на список строк для прохода циклом
+        for note in lines:
+            if delete in note:
+                for_del = lines.index(note)  # Находим индекс нужно строки заметки
+                del lines[for_del]  # Удаляем по индексу
+                base.close()  # Закрываем файл что бы открыть его для перезаписи.. Сам понимаю что это должно быть не
+                # так, но как смог как говориться
+                base = open('content.txt', mode='w', encoding='utf-8')  # Открыываем для перезаписи
+                for line in lines:  # циклом перезаписываем наш файл с удаленной заметкой
+                    base.write(str(line))
+                print(Fore.RED + 'deleted')
+                base.close()
+        if delete not in note:
+            print("This note wasn't found.")
     else:
-        print("This note wasn't found.")
-        base.close()
+        print('Can not open file.')
     command()  # Визов основної функції після кожної операції
 
 
@@ -68,9 +78,13 @@ def earliest_note():
     """
     Функія виводить збережені нотатки у хронологічному порядку - від найранішої до найпізнішої
     """
-    base = open('content.txt', 'r', encoding='utf-8').read()
-    for note in base:
-        print(base.read)
+    if open('content.txt', 'r', encoding='utf-8'):
+        base = open('content.txt', 'r', encoding='utf-8')
+        for note_1 in base:
+            print(note_1)
+        base.close()
+    else:
+        print('Can not open file.')
     command()  # Визов основної функції після кожної операції
 
 
@@ -78,8 +92,14 @@ def latest_note():
     """
     Функція виведення збережених нотаток від найпізнішої до найранішої
     """
-    for note in reversed(base_note):
-        print(note)
+    if open('content.txt', 'r', encoding='utf-8'):
+        base = open('content.txt', 'r', encoding='utf-8')
+        lines = base.readlines()
+        for note_1 in reversed(lines):
+            print(note_1)
+        base.close()
+    else:
+        print('Can not open file.')
     command()  # Визов основної функції після кожної операції
 
 
@@ -87,9 +107,14 @@ def longest_note():
     """
     Функція виведення збережених нотаток від найдовшої до найкоротшої
     """
-    sorted_list = (sorted(base_note, key=len, reverse=True))
-    for note in sorted_list:
-        print(note)
+    if open('content.txt', 'r', encoding='utf-8'):
+        base = open('content.txt', 'r', encoding='utf-8')
+        sorted_list = (sorted(base, key=len, reverse=True))
+        for note_1 in sorted_list:
+            print(note_1)
+        base.close()
+    else:
+        print('Can not open file.')
     command()  # Визов основної функції після кожної операції
 
 
@@ -97,13 +122,20 @@ def shortest_note():
     """
     Функція іиіедення нотаток від найкоротшої до найдовшої
     """
-    sorted_list = sorted(base_note, key=len)
-    for note in sorted_list:
-        print(note)
+    if open('content.txt', 'r', encoding='utf-8'):
+        base = open('content.txt', 'r', encoding='utf-8')
+        sorted_list = sorted(base, key=len)
+        for note_1 in sorted_list:
+            print(note_1)
+        base.close()
+    else:
+        print('Can not open file.')
     command()  # Визов основної функції після кожної операції
 
 
 if __name__ == '__main__':
+    if not open('content.txt', 'r', encoding='utf-8'):
+        print('Can not open file')
     base_note = open('content.txt', 'r', encoding='utf-8')
     command_notations = {
         'add': '- додати нотатку.',
